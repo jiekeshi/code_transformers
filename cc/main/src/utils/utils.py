@@ -12,6 +12,8 @@ import sys
 import random
 import numpy as np
 import re
+import json
+
 
 from collections import OrderedDict
 from time import gmtime, strftime
@@ -120,8 +122,14 @@ def separate_types_values(dp, mode):
         constructs two separate sequence of types and values
         if node do not contain value, sets constants.EMPTY token
     """
+    lits = json.load(open("../../data/literals.json"))
     def copy_if_key(tgt, src, key, default=None):
         if key in src:
+            if key == "value":
+                if src["type"] == "Str":
+                    src[key] = "<STR_LIT>" if not src[key] in lits["str"] else src[key]
+                elif src["type"] == "Num":
+                    src[key] = "<NUM_LIT>" if not src[key] in lits["num"] else src[key]
             tgt[key] = src[key]
         elif default is not None:
             tgt[key] = default

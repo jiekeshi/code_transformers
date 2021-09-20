@@ -8,7 +8,7 @@
 set -e
 PYTHON="python3"
 
-for data_type in py js
+for data_type in py #js
 do
 
     path=../../data # ast dataset
@@ -181,8 +181,8 @@ do
     function main () {
         echo "preprocessing"
         set_struct_names
-        set_struct
-        set_names
+        # set_struct
+        # set_names
     }
 
     main

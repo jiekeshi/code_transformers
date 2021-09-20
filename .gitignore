@@ -1,0 +1,5 @@
+data/*
+cc/data/*
+*.pyc
+cc/main/exp_dir
+train.log
